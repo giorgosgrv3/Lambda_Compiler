@@ -92,6 +92,7 @@ one_declaration: 	/* OPOIODHPOTE declaration/statement */
         free($1);
         free($3);
     }
+    
     | KW_CONST IDENTIFIER '=' const_value ':' variable_type ';'		/* const pi = 3.14 : scalar; */
     {
         char *decl = template("const %s %s = %s;\n", $6, $2, $4);
@@ -100,7 +101,7 @@ one_declaration: 	/* OPOIODHPOTE declaration/statement */
         free($4);
         free($6);
     }
-    | IDENTIFIER '=' expression ';'		/* assignments --> x = 3; (exontas kanei declare x : integer;) */
+    | IDENTIFIER '=' expression ';'		/* assignments --> e.g. x = y + 3;  */
     {
         char *stmt = template("%s = %s;\n", $1, $3);
         fputs(stmt, code.stream);
@@ -234,10 +235,11 @@ statement_list:		/* statements mporei na mhn uparxoun*/
     ;
 
 statement:		/* OPOIODHPOTE legal Lambda statement */
-    IDENTIFIER '=' expression ';' {
+
+    IDENTIFIER '=' expression ';' {     /* e.g. x = 3; */
         $$ = template("%s = %s;\n", $1, $3); free($1); free($3);
     }
-    | IDENTIFIER '(' arg_list_opt ')' ';' {
+    | IDENTIFIER '(' arg_list_opt ')' ';' {     /* e.g. writeInt(x); */
         $$ = template("%s(%s);\n", $1, $3 ? $3 : ""); free($1); if ($3) free($3);
     }
 	| IDENTIFIER KW_INCR expression ';' {

@@ -7,6 +7,7 @@ def main():
   aScalar: scalar;
   aString: str;
   aBoolean: bool;
+  a[3] : integer;
 
   anInt = N;
   anotherInt = a + 3 * 2;

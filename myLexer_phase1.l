@@ -16,7 +16,7 @@ int lineno = 1;
 
 void define_macro(const char* name, const char* value) {
 	//Save or update a macro name + value
-	//e.g. handle @defmacro pi 3.14 by setting macro[0].name = "pi", macro[0].value = "3.14"
+	//e.g. xeirizetai to @defmacro pi 3.14 kanontas macro[0].name = "pi", macro[0].value = "3.14"
     for (int i = 0; i < macro_count; ++i) {
         if (strcmp(macros[i].name, name) == 0) {
             free(macros[i].value);
@@ -32,7 +32,7 @@ void define_macro(const char* name, const char* value) {
 }
 
 const char* lookup_macro(const char* name) {
-//check if the word given has been defined as a macro, to substitute it
+//elegxei an i leksi pou dothike exei apothikeutei ws macro, gia na to kanei substitute
     for (int i = macro_count - 1; i >= 0; --i) {
         if (strcmp(macros[i].name, name) == 0) {
             return macros[i].value;
