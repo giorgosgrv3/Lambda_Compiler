@@ -1,0 +1,107 @@
+
+
+def square(n: integer) -> integer:
+  return n * n;
+enddef;
+
+def cube (n : integer) -> integer:
+	return n*n*n;
+enddef;
+
+const taliro = 5 : integer;
+const randomString = "Lagoudakh akoma perimenw vathmous Texnhth Nohmosynh apo ton Noemvrio\n" : str;
+
+def main():
+  writeStr("TEST PRINTING CONSTANT STRING --> ");
+  writeStr(randomString);
+  
+  writeStr("TEST PRINTING CONSTANT INTEGER --> ");
+  writeInteger(taliro);
+   writeStr("\n");
+
+  
+  a, b, c : integer;
+  theSquare, theCube : integer;
+  
+  a = taliro * 2;
+  c = a;
+  b = 2;
+  c += b;
+  c -= 1;
+  c *= b;
+  c /= 2;
+  c %= 3;
+
+
+  -- Function call
+  theSquare = square(a);
+  theCube = cube(a);
+  
+  writeStr("a is ");
+  writeInteger(a);
+  writeStr("\n");
+  
+  writeStr("The square of a is ");
+  writeInteger(theSquare);
+  writeStr("\n");
+  
+  writeStr("The cube of a is ");
+  writeInteger(theCube);
+  writeStr("\n");
+  
+    -- if-else
+  if (theSquare < 110):
+    writeStr("The square is smaller than 110. It must reach 110.\n");
+	while (theSquare <110):
+		theSquare += 1;
+		writeInteger(theSquare);
+		writeStr("\n");
+	endwhile;
+  else:
+    writeStr("The square is greater than 110.\n");
+  endif;
+  
+      -- while loop
+  writeStr("\nTESTING WHILE LOOP...(It should do 10, 9, 8, 7, 6)\n");
+  while (a > 5):
+    writeInteger(a);
+	writeStr("\n");
+    a -= 1;
+  endwhile;
+  
+  -- simple for loop
+  writeStr("\nTESTING FOR LOOP...(It should do 0,1,2)\n");
+  for i in [0:3]:
+    writeInteger(i);
+	writeStr("\n");
+  endfor;
+  
+    -- for loop with step
+    writeStr("\nTESTING FOR LOOP WITH STEP...(It should do 0,2,4)\n");
+  for i in [0:5:2]:
+    writeInteger(i);
+	writeStr("\n");
+  endfor;
+  
+  -- for loop with break
+    writeStr("\nTESTING FOR LOOP WITH BREAK...(It should do 0 to 6 and then break)\n");
+  for i in [0:10]:
+	writeInteger(i);
+	writeStr("\n");
+    if (i>5):
+		break;
+	endif;
+  endfor;
+  
+  -- for loop with continue
+    writeStr("\nTESTING FOR LOOP WITH CONTINUE... (It should do 0 to 9, but skip 4,5,6,7.)\n");
+	for i in [0:10]:
+	  if (i==4 or i == 5 or i==6 or i==7):
+		continue;
+	  endif;
+	writeInteger(i);
+	writeStr("\n");
+	endfor;
+  
+
+enddef;
