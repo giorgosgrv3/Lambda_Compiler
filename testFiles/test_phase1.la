@@ -1,0 +1,21 @@
+@defmacro N 42
+@defmacro MSG "Test Message\n"
+
+def main():
+  anInt: integer;
+  anotherInt : integer;
+  aScalar: scalar;
+  aString: str;
+  aBoolean: bool;
+  a[3] : integer;
+
+  anInt = N;
+  anotherInt = a + 3 * 2;
+  aString = MSG;
+  aBoolean = True;
+
+  if (aBoolean and (anotherInt > 10)) :
+    writeStr(aString);
+    writeInteger(anotherInt);
+  endif;
+enddef;
